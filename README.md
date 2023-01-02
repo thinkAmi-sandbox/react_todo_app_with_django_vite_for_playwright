@@ -1,4 +1,4 @@
-# react_todo_app_with_django_vite
+# react_todo_app_with_django_vite_for_playwright
 
 ## Tested Environment
 
