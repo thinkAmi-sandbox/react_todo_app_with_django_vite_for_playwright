@@ -15,6 +15,7 @@ export const Index = () => {
   const fetchTasks = async() => {
     const apiUrl = 'http://localhost:8000/api/tasks/'
     const response: AxiosResponse<ApiGetResponse> = await axios.get(apiUrl)
+    await new Promise(resolve => setTimeout(resolve, 5000))
     setTasks(response.data)
   }
 
