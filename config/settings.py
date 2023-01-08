@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'api.apps.ApiConfig',
     'task.apps.TaskConfig',
+    'playwright.apps.PlaywrightConfig',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +162,11 @@ CORS_ALLOWED_ORIGINS = (
 INTERNAL_IPS = (
     '127.0.0.1',
 )
+
+# for django-basicauth
+BASICAUTH_USERS = {
+    'foo': 'pass',
+}
+
+# for flash message
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

@@ -15,7 +15,7 @@ export const Index = () => {
   const fetchTasks = async() => {
     const apiUrl = 'http://localhost:8000/api/tasks/'
     const response: AxiosResponse<ApiGetResponse> = await axios.get(apiUrl)
-    await new Promise(resolve => setTimeout(resolve, 5000))
+    await new Promise(resolve => setTimeout(resolve, 1000))
     setTasks(response.data)
   }
 
@@ -32,6 +32,11 @@ export const Index = () => {
 
       <h2>Task List</h2>
 
+      {tasks.length === 0 && (
+        <>
+          <p id="message">task not found</p>
+        </>
+      )}
       {tasks.map((task) => <li key={task.id}><NavLink to={`/tasks/${task.id}`}>{task.content}</NavLink></li>)}
     </>
   )
