@@ -1,0 +1,22 @@
+{% if messages %}
+  {% for message in messages %}
+    <p id="message-{{ forloop.counter }}">{{ message }}</p>
+  {% endfor %}
+
+  <hr />
+{% endif %}
+
+<h1>ファイルダウンロード</h1>
+<p><a id="download" href="{% url 'playwright:file-download' %}" target="_blank" rel="noopener">CSVダウンロード</a></p>
+
+<hr />
+
+<h1>ファイルアップロード</h1>
+
+<form action="{% url 'playwright:file-upload' %}" method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <input id="upload" type="file" name="upload_file">
+
+  <button type="submit">アップロード</button>
+</form>

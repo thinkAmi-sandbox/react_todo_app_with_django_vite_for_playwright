@@ -1,0 +1,77 @@
+{% extends 'playwright/base.html' %}
+
+{% block page_title %}selector page{% endblock %}
+
+{% block content %}
+  <div id="parent-child">
+    <div class="parent">
+      親の要素
+
+      <div class="prev">直前の要素</div>
+
+      <div class="self">
+          自身
+          <div id="child1" class="child">
+              子の要素1
+              <div class="grandchild">子1の子(孫)の要素1</div>
+              <div class="grandchild">子1の子(孫)の要素2</div>
+          </div>
+          <div id="child2" class="child">
+            子の要素2
+            <div>子2の子(孫)の要素1</div>
+            <div>子2の子(孫)の要素2</div>
+          </div>
+          <div id="child3" class="child">子の要素3</div>
+      </div>
+
+      <div class="post">直後の要素</div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div id="locators">
+    <p data-p="1" id="id_locator">by id</p>
+    <p data-p="2" class="class_locator">by class</p>
+    <p data-p="3" data-testid="test_id_locator">by test id</p>
+    <p data-p="4" role="note">by ARIA role</p>
+    <p data-p="5">by Text</p>
+
+    <form>
+      <label for="label_locator">by label</label>
+      <input type="text" id="label_locator" value="ラベル" />
+
+      <label for="placeholder_locator">by Placeholder</label>
+      <input type="text" id="placeholder_locator" placeholder="紅玉" value="シナノゴールド" />
+    </form>
+  </div>
+
+  <hr />
+
+  <div id="enable_html">
+    <form>
+      <label for="attr_none">Normal</label>
+      <input readonly type="text" id="attr_none" value="Normal Value">
+
+      <label for="attr_readonly">ReadOnly</label>
+      <input readonly type="text" id="attr_readonly" value="Read Only Value">
+
+      <label for="attr_disabled">Disabled</label>
+      <input disabled type="text" id="attr_disabled" value="Disabled Value">
+    </form>
+  </div>
+
+  <hr />
+
+  <div id="viewable_by_css">
+    <button id="none_style" onclick="handleClick('None Style')">None Style</button>
+    <button id="display_none" onclick="handleClick('Display None')" style="display: none">Display None</button>
+    <button id="visibility_hidden" onclick="handleClick('Visibility Hidden')" style="visibility: hidden">Visibility Hidden</button>
+    <button id="opacity_zero" onclick="handleClick('Opacity zero')" style="opacity: 0">Opacity zero</button>
+  </div>
+
+  <script>
+    function handleClick(text) { alert(text) }
+  </script>
+
+{% endblock %}
